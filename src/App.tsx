@@ -1,6 +1,5 @@
 import React from 'react';
-import { Chips } from './Chips';
-import { Chip } from './Chips';
+import { Chips, Chip } from './Chips';
 
 export const allChips: string[] = [
     'Чипс 1',
