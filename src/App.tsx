@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Chips, Chip } from './Chips';
 
 export const allChips: string[] = [
@@ -18,7 +18,7 @@ export const allChips: string[] = [
   ];
 
 const App = () => {
-  const [selectedChip, setSelectedChip] = React.useState<string | undefined>();
+  const [selectedChip, setSelectedChip] = useState<string | undefined>();
 
   return (
     <div id="main" style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}>
