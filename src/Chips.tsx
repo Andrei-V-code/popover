@@ -1,5 +1,5 @@
 import { Popover } from "@mui/material";
-import { FC, RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { FC, MouseEvent, RefObject, useCallback, useEffect, useRef, useState } from "react";
 
 interface ChipsProps {
   items: string[];
@@ -11,7 +11,7 @@ interface ChipsProps {
 interface ChipProps {
   label: string;
   isSelected?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const useChipsOverflow = (
@@ -58,7 +58,7 @@ const useChipsOverflow = (
   return { visibleItems, hiddenItems };
 };
 
-export const Chip: React.FC<ChipProps> = ({ label, isSelected, onClick }) => {
+export const Chip: FC<ChipProps> = ({ label, isSelected, onClick }) => {
   return (
     <button
       onClick={onClick}
@@ -90,7 +90,7 @@ export const Chips: FC<ChipsProps> = ({
     items
   );
 
-  const handleMoreClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMoreClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
