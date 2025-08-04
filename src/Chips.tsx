@@ -30,16 +30,18 @@ const useChipsOverflow = (
     }
 
     const containerWidth = containerRef.current.offsetWidth;
-    const chipElements = containerRef.current.querySelectorAll(".chip");
+    const chipElements = containerRef.current.querySelectorAll("#chip");
     const newVisibleItems: string[] = [];
     const newHiddenItems: string[] = [];
     let totalWidth = 0;
     const moreButtonWidth = 60;
-
+    
     let i = 0;
     for (const item of items) {
       const chipElement = chipElements[i] as HTMLElement;
       const chipWidth = chipElement?.offsetWidth || 80;
+      console.log(chipElement?.offsetWidth)
+      // const chipWidth = 80
       const spacing = i > 0 ? 8 : 0;
       
       if (totalWidth + chipWidth + spacing + moreButtonWidth <= containerWidth) {
@@ -67,6 +69,7 @@ const useChipsOverflow = (
 export const Chip: FC<ChipProps> = ({ label, isSelected, onClick }) => {
   return (
     <button
+      id="chip"
       onClick={onClick}
       className={`btn ${isSelected ? "btn-active" : "btn-inactive"}`}
     >
@@ -134,6 +137,7 @@ export const Chips: FC<ChipsProps> = ({
             <div className="hidden-items">
               {hiddenItems.map((item) => (
                 <Chip
+                  key={item}
                   label={item}
                   isSelected={selectedItems.includes(item)}
                   onClick={() => handleItemClick(item)}
