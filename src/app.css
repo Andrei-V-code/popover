@@ -1,0 +1,14 @@
+.main {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto
+}
+
+h2 {
+  text-align: center;
+}
+
+.container-chip {
+  margin-top: 20px;
+  text-align: center
+}

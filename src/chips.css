@@ -1,0 +1,35 @@
+.btn {
+  padding: 4px 12px;
+  margin: 0 4px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.btn-active {
+  background-color: #52b69a;
+}
+
+.btn-inactive {
+  background-color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden-items {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+}
+
+.hidden-items button {
+  margin: 4px 4px;
+}
