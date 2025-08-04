@@ -1,7 +1,7 @@
 import { Popover } from "@mui/material";
 import { FC, MouseEvent, RefObject, useCallback, useEffect, useRef, useState } from "react";
-import "./chips.css"
 import { ChipsData } from "./App";
+import "./chips.css"
 
 interface ChipsProps {
   items: ChipsData[];
