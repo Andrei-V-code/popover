@@ -1,9 +1,10 @@
 import { Popover } from "@mui/material";
 import { FC, MouseEvent, RefObject, useCallback, useEffect, useRef, useState } from "react";
 import "./chips.css"
+import { ChipsData } from "./App";
 
 interface ChipsProps {
-  items: string[];
+  items: ChipsData[];
   selectedItems?: string[];
   onSelect?: (items: string[]) => void;
   maxVisibleItems?: number;
@@ -17,10 +18,10 @@ interface ChipProps {
 
 const useChipsOverflow = (
   containerRef: RefObject<HTMLElement | null>,
-  items: string[],
+  items: ChipsData[],
 ) => {
-  const [visibleItems, setVisibleItems] = useState<string[]>([]);
-  const [hiddenItems, setHiddenItems] = useState<string[]>([]);
+  const [visibleItems, setVisibleItems] = useState<ChipsData[]>([]);
+  const [hiddenItems, setHiddenItems] = useState<ChipsData[]>([]);
 
   const calculateVisibleItems = useCallback(() => {
     if (!containerRef.current || items.length === 0) {
@@ -31,8 +32,8 @@ const useChipsOverflow = (
 
     const containerWidth = containerRef.current.offsetWidth;
     const chipElements = containerRef.current.querySelectorAll("#chip");
-    const newVisibleItems: string[] = [];
-    const newHiddenItems: string[] = [];
+    const newVisibleItems: ChipsData[] = [];
+    const newHiddenItems: ChipsData[] = [];
     let totalWidth = 0;
     const moreButtonWidth = 60;
     
@@ -40,8 +41,6 @@ const useChipsOverflow = (
     for (const item of items) {
       const chipElement = chipElements[i] as HTMLElement;
       const chipWidth = chipElement?.offsetWidth || 80;
-      console.log(chipElement?.offsetWidth)
-      // const chipWidth = 80
       const spacing = i > 0 ? 8 : 0;
       
       if (totalWidth + chipWidth + spacing + moreButtonWidth <= containerWidth) {
@@ -110,10 +109,10 @@ export const Chips: FC<ChipsProps> = ({
     <div ref={containerRef} className="container">
       {visibleItems.map((item) => (
         <Chip
-          key={item}
-          label={item}
-          isSelected={selectedItems.includes(item)}
-          onClick={() => handleItemClick(item)}
+          key={item.id}
+          label={item.name}
+          isSelected={selectedItems.includes(item.name)}
+          onClick={() => handleItemClick(item.name)}
         />
       ))}
 
@@ -137,10 +136,10 @@ export const Chips: FC<ChipsProps> = ({
             <div className="hidden-items">
               {hiddenItems.map((item) => (
                 <Chip
-                  key={item}
-                  label={item}
-                  isSelected={selectedItems.includes(item)}
-                  onClick={() => handleItemClick(item)}
+                  key={item.id}
+                  label={item.name}
+                  isSelected={selectedItems.includes(item.name)}
+                  onClick={() => handleItemClick(item.name)}
                 />
               ))}
             </div>
